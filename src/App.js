@@ -1,9 +1,39 @@
-import React from 'react';
-import { Github, Linkedin, Mail, Code, Briefcase, User, Star } from 'lucide-react'; // Importing icons from lucide-react
+import { Github, Linkedin, Mail, Code, Briefcase, User, Star } from 'lucide-react';
 import profilePic from './Images/henrique.jpeg';
+import React, { useState } from 'react';
 
 // Main App Component
 function App() {
+
+const [formStatus, setFormStatus] = useState(null);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('https://formspree.io/f/meokjgyk', {
+        method: 'POST',
+        body: data,
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+
+      if (res.ok) {
+        setFormStatus('success');
+        form.reset();
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      setFormStatus('error');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 font-inter antialiased">
       {/* Navbar */}
@@ -59,34 +89,38 @@ function App() {
             </div>
 
             <SkillCategory title="Programming Languages">
-              <SkillTag name="Python" type="frequently" />
+              <SkillTag name="C#" type="frequently" />
               <SkillTag name="JavaScript" type="frequently" />
-              <SkillTag name="TypeScript" type="frequently" />
               <SkillTag name="HTML" type="frequently" />
-              <SkillTag name="CSS/SCSS" type="frequently" />
+              <SkillTag name="CSS" type="frequently" />
+              <SkillTag name="Java" type="occasionally" />
               <SkillTag name="Go" type="occasionally" />
-              <SkillTag name="Ruby" type="occasionally" />
-              <SkillTag name="Bash Scripting" type="occasionally" />
+              <SkillTag name="PHP" type="occasionally" />
+              <SkillTag name="TypeScript" type="occasionally" />
+              <SkillTag name="Python" type="occasionally" />
             </SkillCategory>
 
             <SkillCategory title="Frameworks & Libraries">
+              <SkillTag name=".NET" type="frequently" />
+              <SkillTag name=".NET CORE" type="frequently" />
+              <SkillTag name="ASP.NET MVC" type="frequently" />
+              <SkillTag name="NUnit" type="frequently" />
               <SkillTag name="React" type="frequently" />
-              <SkillTag name="Next.js" type="frequently" />
-              <SkillTag name="Tailwind CSS" type="frequently" />
-              <SkillTag name="Django" type="frequently" />
-              <SkillTag name="Flask" type="frequently" />
-              <SkillTag name="FastAPI" type="occasionally" />
-              <SkillTag name="Material UI" type="occasionally" />
-              <SkillTag name="Chakra UI" type="occasionally" />
+              <SkillTag name="Xamarin (Android and iOS)" type="frequently" />
+              <SkillTag name="xUnit" type="occasionally" />
+              <SkillTag name=".NET MAUI" type="occasionally" />
+              <SkillTag name="Tailwind CSS" type="occasionally" />
               <SkillTag name="Bootstrap" type="occasionally" />
-              <SkillTag name="Redux" type="occasionally" />
             </SkillCategory>
 
             <SkillCategory title="Databases & Tools">
-              <SkillTag name="SQL (PostgreSQL, MySQL)" type="frequently" />
+              <SkillTag name="SQL" type="frequently" />
               <SkillTag name="Git" type="frequently" />
-              <SkillTag name="Docker" type="frequently" />
-              <SkillTag name="AWS" type="occasionally" />
+              <SkillTag name="Azure" type="frequently" />
+              <SkillTag name="Agile (Scrum, Kanban)" type="frequently" />
+              <SkillTag name="Firebase" type="occasionally" />
+              <SkillTag name="Redis" type="occasionally" />
+              <SkillTag name="Docker" type="occasionally" />
               <SkillTag name="Kubernetes" type="occasionally" />
             </SkillCategory>
           </div>
@@ -97,26 +131,35 @@ function App() {
           <h2 className="text-4xl font-bold text-indigo-400 mb-12">My Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl w-full">
             <ProjectCard
-              title="E-commerce Platform"
-              description="A full-stack e-commerce solution with user authentication, product management, and payment integration."
-              technologies={['React', 'Node.js', 'Express', 'MongoDB', 'Stripe']}
-              githubLink="#"
-              liveLink="#"
+              title="🔧 To-Do List App"
+              description="A minimalist to-do list built with React Hooks for managing everyday tasks effortlessly."
+              technologies={['React']}
+              githubLink="https://github.com/Henr1queSantos"
+              liveLink="https://henr1quesantos.github.io/hs_todo-list-hooks/"
             />
             <ProjectCard
-              title="Task Management App"
-              description="A responsive web application for managing daily tasks with drag-and-drop functionality."
-              technologies={['Vue.js', 'Firebase', 'Tailwind CSS']}
-              githubLink="#"
-              liveLink="#"
+              title="🌦️ Weather App"
+              description="Get real-time weather updates with this responsive app that fetches data from external APIs."
+              technologies={['React']}
+              githubLink="https://github.com/Henr1queSantos"
+              liveLink="https://henr1quesantos.github.io/hs_weather-app/"
             />
             <ProjectCard
-              title="Personal Blog"
-              description="A static blog site built with a modern framework, featuring markdown support and SEO optimization."
-              technologies={['Next.js', 'Markdown', 'Vercel']}
-              githubLink="#"
-              liveLink="#"
+              title="🎯 Trivia Quiz"
+              description="A dynamic quiz game using Open Trivia DB API to challenge your knowledge."
+              technologies={['React']}
+              githubLink="https://github.com/Henr1queSantos"
+              liveLink="https://henr1quesantos.github.io/hs_trivia-quiz/"
             />
+
+            <ProjectCard
+              title="🖼️ Image Gallery"
+              description="A clean and responsive image gallery showcasing smooth design and layout transitions."
+              technologies={['React']}
+              githubLink="#https://github.com/Henr1queSantos"
+              liveLink="https://henr1quesantos.github.io/hs_gallery"
+            />
+
             <ProjectCard
               title="AI Chatbot Integration"
               description="Integrated a custom AI chatbot into a customer support portal to handle common queries."
@@ -131,13 +174,6 @@ function App() {
               githubLink="#"
               liveLink="#"
             />
-            <ProjectCard
-              title="Data Visualization Dashboard"
-              description="Interactive dashboard to visualize complex datasets, providing insights through charts and graphs."
-              technologies={['D3.js', 'React', 'Python', 'Pandas']}
-              githubLink="#"
-              liveLink="#"
-            />
           </div>
         </section>
 
@@ -146,22 +182,28 @@ function App() {
           <h2 className="text-4xl font-bold text-indigo-400 mb-12">Work Experience</h2>
           <div className="bg-gray-800 p-8 rounded-lg shadow-xl max-w-3xl w-full border border-gray-700">
             <ExperienceEntry
-              title="Senior Software Engineer"
-              company="Tech Solutions Inc."
+              title="Senior .NET Developer"
+              company="ASK BLUE"
               duration="Jan 2022 - Present"
-              description="Led the development of scalable backend services using Python and Go, improving system performance by 30%. Mentored junior developers and contributed to architectural design."
+              description="Developed and optimized scalable web applications using .NET technologies, delivering new features and enhancing performance."
             />
             <ExperienceEntry
-              title="Software Developer"
-              company="Innovate Corp."
-              duration="Jul 2019 - Dec 2021"
-              description="Developed and maintained web applications using React and Node.js. Implemented new features and optimized existing code for better user experience."
+              title="Mid .NET Developer"
+              company="DIMEP"
+              duration="Sep 2019 - Dec 2021"
+              description="Collaborated in an Agile environment to develop and maintain mobile (iOS/Android) and web applications. Contributed features, resolved bugs, and published updates to the App Store and Google Play."
             />
             <ExperienceEntry
-              title="Junior Developer Intern"
-              company="Startup Hub"
-              duration="May 2018 - Aug 2018"
-              description="Assisted in front-end development tasks, bug fixing, and learned best practices in a fast-paced agile environment."
+              title=".NET Developer"
+              company="SINQIA S.A"
+              duration="OCT 2018 - Aug 2019"
+              description="Maintained and enhanced a .NET-based application, fixing bugs and optimizing performance for a smoother user experience."
+            />
+            <ExperienceEntry
+              title="Help Desk Support"
+              company="RCV Soluções Tecnológicas"
+              duration="Aug 2016 - OCT 2018"
+              description="Provided technical support for Windows applications, hardware maintenance, and software installations. Managed user accounts in Active Directory and resolved day-to-day technical issues for end users."
             />
           </div>
         </section>
@@ -171,9 +213,9 @@ function App() {
           <h2 className="text-4xl font-bold text-indigo-400 mb-12">Get in Touch</h2>
           <div className="bg-gray-800 p-8 rounded-lg shadow-xl max-w-2xl w-full border border-gray-700">
             <p className="text-lg text-gray-300 mb-8 text-center">
-              Have a question or want to work together? Feel free to reach out!
+              Have a question ? Feel free to reach out!
             </p>
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div>
                 <label htmlFor="name" className="block text-gray-300 text-sm font-bold mb-2">
                   Name
@@ -223,24 +265,22 @@ function App() {
 
       {/* Footer */}
       <footer className="bg-gray-800 p-6 text-center text-gray-400 border-t border-gray-700">
-        <p>&copy; {new Date().getFullYear()} John Doe. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Henrique Santos. All rights reserved.</p>
       </footer>
     </div>
   );
 }
 
-// NavItem Component for navigation links
 const NavItem = ({ href, icon, text }) => (
   <a
     href={href}
     className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center space-x-2 p-2 rounded-md hover:bg-gray-700"
   >
     {icon}
-    <span className="hidden sm:inline">{text}</span> {/* Hide text on small screens */}
+    <span className="hidden sm:inline">{text}</span> { }
   </a>
 );
 
-// SocialLink Component for social media links
 const SocialLink = ({ href, icon, label }) => (
   <a
     href={href}
@@ -253,7 +293,6 @@ const SocialLink = ({ href, icon, label }) => (
   </a>
 );
 
-// SkillCategory Component to group skills
 const SkillCategory = ({ title, children }) => (
   <div className="mb-8">
     <h3 className="text-2xl font-semibold text-white mb-4 border-b border-gray-600 pb-2">
@@ -265,7 +304,6 @@ const SkillCategory = ({ title, children }) => (
   </div>
 );
 
-// SkillTag Component to display individual skills with frequency indicator
 const SkillTag = ({ name, type }) => {
   const baseClasses = "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-md";
   const frequentlyClasses = "bg-indigo-600 text-white hover:bg-indigo-700 border border-indigo-600 hover:border-indigo-700";
@@ -280,7 +318,6 @@ const SkillTag = ({ name, type }) => {
   );
 };
 
-// ProjectCard Component for displaying project details
 const ProjectCard = ({ title, description, technologies, githubLink, liveLink }) => (
   <div className="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 flex flex-col h-full">
     <h3 className="text-2xl font-bold text-white mb-3">{title}</h3>
@@ -316,7 +353,6 @@ const ProjectCard = ({ title, description, technologies, githubLink, liveLink })
   </div>
 );
 
-// ExperienceEntry Component for displaying work experience
 const ExperienceEntry = ({ title, company, duration, description }) => (
   <div className="mb-8 last:mb-0 p-6 bg-gray-700 rounded-lg shadow-md border border-gray-600">
     <h3 className="text-2xl font-bold text-white mb-1">{title}</h3>
