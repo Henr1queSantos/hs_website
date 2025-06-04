@@ -74,7 +74,7 @@ const [formStatus, setFormStatus] = useState(null);
             <div className="flex justify-center space-x-6">
               <SocialLink href="https://github.com/Henr1queSantos" icon={<Github size={24} />} label="GitHub" />
               <SocialLink href="https://www.linkedin.com/in/henrique-santos-5608a8139/" icon={<Linkedin size={24} />} label="LinkedIn" />
-              <SocialLink href="henrique.moraesps@gmail.com" icon={<Mail size={24} />} label="Email" />
+              <SocialLink href="#contact" icon={<Mail size={24} />} label="Email" />
             </div>
           </div>
         </section>
@@ -281,17 +281,26 @@ const NavItem = ({ href, icon, text }) => (
   </a>
 );
 
-const SocialLink = ({ href, icon, label }) => (
-  <a
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-indigo-400 hover:text-indigo-300 transition-transform duration-300 transform hover:scale-110 p-2 rounded-full border border-indigo-400 hover:border-indigo-300"
-    aria-label={label}
-  >
-    {icon}
-  </a>
-);
+const SocialLink = ({ href, icon, label }) => {
+  const isExternal = href.startsWith('http');
+
+  return (
+    <a
+      href={href}
+      {...(isExternal
+        ? {
+            target: '_blank',
+            rel: 'noopener noreferrer',
+          }
+        : {})}
+      className="text-indigo-400 hover:text-indigo-300 transition-transform duration-300 transform hover:scale-110 p-2 rounded-full border border-indigo-400 hover:border-indigo-300"
+      aria-label={label}
+    >
+      {icon}
+    </a>
+  );
+};
+
 
 const SkillCategory = ({ title, children }) => (
   <div className="mb-8">
