@@ -161,18 +161,18 @@ const [formStatus, setFormStatus] = useState(null);
             />
 
             <ProjectCard
-              title="AI Chatbot Integration"
+              title="🤖 AI Chatbox"
               description="Integrated a custom AI chatbot into a customer support portal to handle common queries."
-              technologies={['Python', 'Flask', 'OpenAI API', 'React']}
-              githubLink="#"
-              liveLink="#"
+              technologies={['Gemini API', 'React']}
+              githubLink="https://github.com/Henr1queSantos"
+              liveLink="https://henr1quesantos.github.io/hs_ai-chatbox/"
             />
             <ProjectCard
-              title="Real-time Collaborative Whiteboard"
-              description="A web-based whiteboard application allowing multiple users to draw and collaborate in real-time."
+              title="🧑‍🎨 Real-time Collaborative Whiteboard"
+              description="Collaborate in real time with this interactive whiteboard—ideal for visual thinking and spontaneous ideas."
               technologies={['React', 'Socket.IO', 'Canvas API']}
-              githubLink="#"
-              liveLink="#"
+              githubLink="https://github.com/Henr1queSantos"
+              liveLink="https://henr1quesantos.github.io/hs_collaborative-whiteboard/"
             />
           </div>
         </section>
