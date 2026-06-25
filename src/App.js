@@ -68,7 +68,7 @@ const [formStatus, setFormStatus] = useState(null);
             </div>
             <p className="text-lg text-gray-300 mb-8 leading-relaxed">
               "I'm a software developer and tech enthusiast with a genuine passion for creating cool digital solutions.
-              For over five years, I've been diving deep into full-stack development, cloud computing, and mobile apps, always aiming to weave creativity into every line of clean code I write.
+              For over seven years, I've been diving deep into full-stack development, cloud computing, and mobile apps, always aiming to weave creativity into every line of clean code I write.
               It's incredibly rewarding to build things that have a real impact!"
             </p>
             <div className="flex justify-center space-x-6">
