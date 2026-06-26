@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Code, Briefcase, User, Star } from 'lucide-react';
+import { Github, Linkedin, Mail, Code, Briefcase, User, Star, ExternalLink, Cpu, Database, Shield, Zap, FlaskConical, Container } from 'lucide-react';
 import profilePic from './Images/henrique.jpeg';
 import React, { useState } from 'react';
 
@@ -128,51 +128,112 @@ const [formStatus, setFormStatus] = useState(null);
 
         {/* Projects Section */}
         <section id="projects" className="min-h-screen flex flex-col items-center justify-center py-16">
-          <h2 className="text-4xl font-bold text-indigo-400 mb-12">My Projects</h2>
+          <h2 className="text-4xl font-bold text-indigo-400 mb-4">My Projects</h2>
+          <p className="text-gray-400 mb-12 text-center max-w-xl">A mix of frontend experiments and backend engineering.</p>
+
+          {/* ── FEATURED PROJECT ── */}
+          <div className="max-w-5xl w-full mb-10">
+            <div className="relative bg-gradient-to-br from-gray-800 via-gray-800 to-indigo-950 border border-indigo-500 rounded-2xl shadow-2xl overflow-hidden">
+              {/* Glow accent */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500" />
+
+              {/* Badge */}
+              <div className="absolute top-5 right-5">
+                <span className="flex items-center gap-1.5 bg-indigo-600 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg uppercase tracking-wider">
+                  <Star size={12} fill="currentColor" /> Featured Project
+                </span>
+              </div>
+
+              <div className="p-8 md:p-10">
+                {/* Title */}
+                <div className="mb-2">
+                  <span className="text-xs font-semibold text-indigo-400 uppercase tracking-widest">Backend · REST API · .NET 8</span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+                  🏦 HS Bank — Digital Banking API
+                </h3>
+                <p className="text-gray-300 text-base md:text-lg mb-8 max-w-1xl leading-relaxed">
+                  An enterprise-grade banking simulation API built as a <span className="text-indigo-300 font-semibold">Modular Monolith</span> with event-driven architecture. Handles secure customer onboarding, JWT authentication, and asynchronous loan processing via RabbitMQ — designed to scale into microservices.
+                </p>
+
+                {/* Feature pills */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
+                  <FeaturePill icon={<Cpu size={14} />} label="Clean Arch + DDD" />
+                  <FeaturePill icon={<Zap size={14} />} label="CQRS via MediatR" />
+                  <FeaturePill icon={<Database size={14} />} label="PostgreSQL + EF Core" />
+                  <FeaturePill icon={<Shield size={14} />} label="JWT + BCrypt Auth" />
+                  <FeaturePill icon={<FlaskConical size={14} />} label="xUnit + Moq Tests" />
+                  <FeaturePill icon={<Container size={14} />} label="Docker Compose" />
+                </div>
+
+                {/* Tech tags */}
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {['C# 12', '.NET 8', 'ASP.NET Core', 'PostgreSQL', 'RabbitMQ', 'MassTransit', 'Docker', 'xUnit', 'FluentValidation', 'Entity Framework Core'].map((t) => (
+                    <span key={t} className="px-3 py-1 bg-indigo-900 bg-opacity-60 text-indigo-300 text-xs rounded-full border border-indigo-700">
+                      {t}
+                    </span>
+                  ))}
+			  
+                </div>
+
+                {/* CTA */}
+                <a
+                  href="https://github.com/Henr1queSantos/HsBank"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-6 py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                >
+                  <Github size={18} /> View on GitHub <ExternalLink size={14} />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* ── OTHER PROJECTS GRID ── */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl w-full">
             <ProjectCard
               title="🔧 To-Do List App"
               description="A minimalist to-do list built with React Hooks for managing everyday tasks effortlessly."
               technologies={['React']}
-              githubLink="https://github.com/Henr1queSantos"
+              githubLink="https://github.com/Henr1queSantos/hs_todo-list-hooks"
               liveLink="https://henr1quesantos.github.io/hs_todo-list-hooks/"
             />
             <ProjectCard
               title="🌦️ Weather App"
               description="Get real-time weather updates with this responsive app that fetches data from external APIs."
               technologies={['React']}
-              githubLink="https://github.com/Henr1queSantos"
-              liveLink="https://henr1quesantos.github.io/hs_weather-app/"
+              githubLink="https://github.com/Henr1queSantos/hs_weather-app"
+              liveLink="https://weather.henriquesantos.dev"
             />
             <ProjectCard
               title="🎯 Trivia Quiz"
               description="A dynamic quiz game using Open Trivia DB API to challenge your knowledge."
               technologies={['React']}
-              githubLink="https://github.com/Henr1queSantos"
-              liveLink="https://henr1quesantos.github.io/hs_trivia-quiz/"
+              githubLink="https://github.com/Henr1queSantos/hs_trivia-quiz"
+              liveLink="https://triviaquiz.henriquesantos.dev"
             />
 
             <ProjectCard
               title="🖼️ Image Gallery"
               description="A clean and responsive image gallery showcasing smooth design and layout transitions."
-              technologies={['React']}
-              githubLink="#https://github.com/Henr1queSantos"
-              liveLink="https://henr1quesantos.github.io/hs_gallery"
+              technologies={['React', 'Unsplash API']}
+              githubLink="https://github.com/Henr1queSantos/hs_gallery"
+              liveLink="https://gallery.henriquesantos.dev"
             />
 
             <ProjectCard
               title="🤖 AI Chatbox"
-              description="Integrated a custom AI chatbot into a customer support portal to handle common queries."
+              description="Integrated a custom AI chatbot powered by Google Gemini to handle queries conversationally."
               technologies={['Gemini API', 'React']}
-              githubLink="https://github.com/Henr1queSantos"
-              liveLink="https://henr1quesantos.github.io/hs_ai-chatbox/"
+              githubLink="https://github.com/Henr1queSantos/hs_ai-chatbox"
+              liveLink="https://ai.henriquesantos.dev"
             />
             <ProjectCard
-              title="🧑‍🎨 Real-time Collaborative Whiteboard"
-              description="Collaborate in real time with this interactive whiteboard—ideal for visual thinking and spontaneous ideas."
-              technologies={['React', 'Socket.IO', 'Canvas API']}
-              githubLink="https://github.com/Henr1queSantos"
-              liveLink="https://henr1quesantos.github.io/hs_collaborative-whiteboard/"
+              title="🧑‍🎨 Collaborative Whiteboard"
+              description="Collaborate in real time with this interactive whiteboard — ideal for visual thinking and spontaneous ideas."
+              technologies={['React', 'Socket.IO', 'Konva']}
+              githubLink="https://github.com/Henr1queSantos/hs_collaborative-whiteboard"
+              liveLink="https://whiteboard.henriquesantos.dev"
             />
           </div>
         </section>
@@ -259,6 +320,12 @@ const [formStatus, setFormStatus] = useState(null);
                 Send Message
               </button>
             </form>
+            {formStatus === 'success' && (
+              <p className="mt-4 text-green-400 text-center">Message sent successfully!</p>
+            )}
+            {formStatus === 'error' && (
+              <p className="mt-4 text-red-400 text-center">Something went wrong. Please try again.</p>
+            )}
           </div>
         </section>
       </main>
@@ -326,6 +393,13 @@ const SkillTag = ({ name, type }) => {
     </span>
   );
 };
+
+const FeaturePill = ({ icon, label }) => (
+  <div className="flex items-center gap-2 bg-gray-700 bg-opacity-60 border border-gray-600 rounded-lg px-3 py-2 text-sm text-gray-300">
+    <span className="text-indigo-400">{icon}</span>
+    {label}
+  </div>
+);
 
 const ProjectCard = ({ title, description, technologies, githubLink, liveLink }) => (
   <div className="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700 flex flex-col h-full">
